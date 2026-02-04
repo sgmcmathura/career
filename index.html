@@ -1,157 +1,287 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="hi">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>People Pulse Prodigy</title>
-<script src="https://cdn.tailwindcss.com"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Page - Maniebook</title>
+
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto; }
+
+        .header img { height: 80px; width: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) { .header { flex-direction: column; gap: 15px; } .header img { height: 60px; } }
+
+        .cover { width: 100%; height: 400px; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat; }
+
+        @media (max-width: 768px) { .cover { height: 250px; } }
+
+        .content { max-width: 1200px; margin: 40px auto; padding: 0 20px; text-align: center; }
+
+        .content h2 { font-size: 2.5em; margin-bottom: 20px; color: #2c3e50; }
+
+        .content p { font-size: 1.2em; margin-bottom: 30px; color: #555; }
+
+        .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto 40px; }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50; }
+
+        input, select, textarea { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
+
+        textarea { resize: vertical; min-height: 120px; }
+
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #3498db; }
+
+        #submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; }
+
+        .loading { display: none; text-align: center; padding: 40px; }
+
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .success { display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 8px; margin-top: 20px; font-weight: 600; }
+
+        .admin-link { display: block; margin-top: 30px; padding: 15px; background: #27ae60; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 18px; max-width: 300px; margin-left: auto; margin-right: auto; }
+
+    </style>
+
 </head>
-<body class="bg-gray-100 min-h-screen">
-<div class="container mx-auto px-4 py-8">
-  <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-6xl mx-auto">
-    <div class="bg-blue-600 text-white px-6 py-4">
-      <div class="flex flex-col items-center">
-        <h1 class="text-2xl md:text-3xl font-bold text-center">People Pulse Prodigy 🚀</h1>
-        <p class="text-center text-blue-100 mt-1" id="modeDescription">Loading...</p>
-      </div>
+
+<body>
+
+
+
+<header class="header">
+
+    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=300&h=80&fit=crop" alt="Left Logo">
+
+    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=80&fit=crop" alt="Right Logo">
+
+</header>
+
+
+
+<div class="cover"></div>
+
+
+
+<section class="content">
+
+    <h2>हमारी टीम में शामिल हों</h2>
+
+    <p>Maniebook पर हम डिजिटल पब्लिशिंग को नई ऊंचाइयों तक ले जा रहे हैं।</p>
+
+
+
+    <form id="job-form" class="form-container">
+
+        <div class="form-group">
+
+            <label>Full Name *</label>
+
+            <input type="text" id="fullName" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Mobile Number *</label>
+
+            <input type="tel" id="mobile" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Email ID *</label>
+
+            <input type="email" id="email" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Qualification *</label>
+
+            <input type="text" id="qualification" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Experience *</label>
+
+            <input type="text" id="experience" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>Applied Job Role *</label>
+
+            <select id="jobRole" required>
+
+                <option value="">Select</option>
+
+                <option>Web Developer</option>
+
+                <option>Content Creator</option>
+
+                <option>Designer</option>
+
+                <option>Other</option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>City *</label>
+
+            <input type="text" id="city" required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>State *</label>
+
+            <input type="text" id="state" required>
+
+        </div>
+
+
+
+        <!-- ✅ नया Bio Paragraph Input -->
+
+        <div class="form-group">
+
+            <label>Write Bio with Experience And Qualification *</label>
+
+            <textarea id="bio" placeholder="Write about your experience, qualification and skills..." required></textarea>
+
+        </div>
+
+
+
+        <button type="submit" id="submit-btn">Apply Now</button>
+
+    </form>
+
+
+
+    <div class="loading" id="loading">
+
+        <div class="spinner"></div>
+
+        <p>Please wait...</p>
+
     </div>
 
-    <div id="adminControls" class="px-6 py-4 flex justify-center space-x-4" style="display:none;">
-      <button id="addRowBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Add Row</button>
+
+
+    <div class="success" id="success">
+
+        Thank you for applying! HR team will contact you shortly.
+
     </div>
 
-    <div class="overflow-x-auto p-4">
-      <table class="min-w-full divide-y divide-gray-200" id="peopleTable">
-        <thead class="bg-gray-50">
-          <tr>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Service</th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">People</th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" id="actionHeader" style="display:none;">Action</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200" id="tableBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
+
+
+    <a href="admin.html" class="admin-link">Admin View Applications</a>
+
+</section>
+
+
 
 <script>
-const tableBody = document.getElementById("tableBody");
-const addRowBtn = document.getElementById("addRowBtn");
-const adminControls = document.getElementById("adminControls");
-const actionHeader = document.getElementById("actionHeader");
-const modeDescription = document.getElementById("modeDescription");
 
-let data = JSON.parse(localStorage.getItem("peopleData")) || [];
+document.getElementById('job-form').addEventListener('submit', function(e) {
 
-// Detect admin mode by URL containing /0082
-const isAdmin = window.location.pathname.includes('/0082');
+    e.preventDefault();
 
-modeDescription.innerText = isAdmin ? "Admin Portal" : "Visitor View";
 
-function renderTable() {
-  tableBody.innerHTML = "";
-  data.forEach((row, index) => {
-    const tr = document.createElement("tr");
-    tr.className = "hover:bg-gray-50";
 
-    if (isAdmin) {
-      // Editable admin row with delete button
-      tr.innerHTML = `
-        <td class="px-4 py-3 whitespace-nowrap border border-gray-200" contenteditable="true">${row.name}</td>
-        <td class="px-4 py-3 whitespace-nowrap border border-gray-200" contenteditable="true">${row.city}</td>
-        <td class="px-4 py-3 whitespace-nowrap border border-gray-200" contenteditable="true">${row.service}</td>
-        <td class="px-4 py-3 whitespace-nowrap border border-gray-200" contenteditable="true">${row.people}</td>
-        <td class="px-4 py-3 whitespace-nowrap border border-gray-200" contenteditable="true">${row.date}</td>
-        <td class="px-4 py-3 whitespace-nowrap text-center">
-          <button onclick="deleteRow(${index})" class="text-red-500 hover:text-red-700 p-1 rounded-full" title="Delete">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 7H5m14 0l-1 12a2 2 0 01-2 2H8a2 2 0 01-2-2L5 7m5 4v6m4-6v6" />
-            </svg>
-          </button>
-        </td>
-      `;
-    } else {
-      // Read-only visitor row
-      tr.innerHTML = `
-        <td class="px-4 py-3 whitespace-nowrap">${row.name}</td>
-        <td class="px-4 py-3 whitespace-nowrap">${row.city}</td>
-        <td class="px-4 py-3 whitespace-nowrap">${row.service}</td>
-        <td class="px-4 py-3 whitespace-nowrap">${row.people}</td>
-        <td class="px-4 py-3 whitespace-nowrap">${row.date}</td>
-      `;
-    }
-    tableBody.appendChild(tr);
-  });
+    const formData = {
 
-  if (isAdmin) {
-    // Add input listeners for auto-save
-    document.querySelectorAll("#tableBody td[contenteditable='true']").forEach(cell => {
-      cell.addEventListener("input", saveData);
-    });
-  }
-}
+        fullName: fullName.value,
 
-function saveData() {
-  const rows = document.querySelectorAll("#tableBody tr");
-  data = Array.from(rows).map(row => {
-    const cells = row.querySelectorAll("td");
-    return {
-      name: cells[0].innerText.trim(),
-      city: cells[1].innerText.trim(),
-      service: cells[2].innerText.trim(),
-      people: cells[3].innerText.trim(),
-      date: cells[4].innerText.trim()
+        mobile: mobile.value,
+
+        email: email.value,
+
+        qualification: qualification.value,
+
+        experience: experience.value,
+
+        jobRole: jobRole.value,
+
+        city: city.value,
+
+        state: state.value,
+
+        bio: bio.value,
+
+        timestamp: new Date().toLocaleString()
+
     };
-  });
-  localStorage.setItem("peopleData", JSON.stringify(data));
-}
 
-// Delete a row
-function deleteRow(index) {
-  if (confirm("Are you sure you want to delete this record?")) {
-    data.splice(index, 1);
-    saveData();
-    renderTable();
-  }
-}
 
-// Add new row button event
-addRowBtn.addEventListener("click", () => {
-  data.push({
-    name: "New Name",
-    city: "City",
-    service: "Service",
-    people: "1",
-    date: new Date().toLocaleDateString()
-  });
-  saveData();
-  renderTable();
+
+    loading.style.display = 'block';
+
+    document.querySelector('.form-container').style.display = 'none';
+
+
+
+    setTimeout(() => {
+
+        let apps = JSON.parse(localStorage.getItem('applications') || '[]');
+
+        apps.push(formData);
+
+        localStorage.setItem('applications', JSON.stringify(apps));
+
+        loading.style.display = 'none';
+
+        success.style.display = 'block';
+
+    }, 3000);
+
 });
 
-// Show admin controls based on mode
-if (isAdmin) {
-  adminControls.style.display = "flex";
-  actionHeader.style.display = "table-cell";
-} else {
-  adminControls.style.display = "none";
-  actionHeader.style.display = "none";
-}
-
-// Listen for storage changes for real-time sync
-window.addEventListener('storage', e => {
-  if (e.key === "peopleData") {
-    data = JSON.parse(e.newValue) || [];
-    renderTable();
-  }
-});
-
-// Initial render
-renderTable();
 </script>
+
+
+
 </body>
+
 </html>
