@@ -1,287 +1,624 @@
-<!DOCTYPE html>
-
-<html lang="hi">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Career Page - Maniebook</title>
-
-    <style>
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
-
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto; }
-
-        .header img { height: 80px; width: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-
-        @media (max-width: 768px) { .header { flex-direction: column; gap: 15px; } .header img { height: 60px; } }
-
-        .cover { width: 100%; height: 400px; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat; }
-
-        @media (max-width: 768px) { .cover { height: 250px; } }
-
-        .content { max-width: 1200px; margin: 40px auto; padding: 0 20px; text-align: center; }
-
-        .content h2 { font-size: 2.5em; margin-bottom: 20px; color: #2c3e50; }
-
-        .content p { font-size: 1.2em; margin-bottom: 30px; color: #555; }
-
-        .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto 40px; }
-
-        .form-group { margin-bottom: 20px; text-align: left; }
-
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50; }
-
-        input, select, textarea { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
-
-        textarea { resize: vertical; min-height: 120px; }
-
-        input:focus, select:focus, textarea:focus { outline: none; border-color: #3498db; }
-
-        #submit-btn { width: 100%; padding: 15px; background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; }
-
-        .loading { display: none; text-align: center; padding: 40px; }
-
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
-
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .success { display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 8px; margin-top: 20px; font-weight: 600; }
-
-        .admin-link { display: block; margin-top: 30px; padding: 15px; background: #27ae60; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 18px; max-width: 300px; margin-left: auto; margin-right: auto; }
-
-    </style>
-
-</head>
-
-<body>
-
-
-
-<header class="header">
-
-    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=300&h=80&fit=crop" alt="Left Logo">
-
-    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=80&fit=crop" alt="Right Logo">
-
-</header>
-
-
-
-<div class="cover"></div>
-
-
-
-<section class="content">
-
-    <h2>हमारी टीम में शामिल हों</h2>
-
-    <p>Maniebook पर हम डिजिटल पब्लिशिंग को नई ऊंचाइयों तक ले जा रहे हैं।</p>
-
-
-
-    <form id="job-form" class="form-container">
-
-        <div class="form-group">
-
-            <label>Full Name *</label>
-
-            <input type="text" id="fullName" required>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Mobile Number *</label>
-
-            <input type="tel" id="mobile" required>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Email ID *</label>
-
-            <input type="email" id="email" required>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Qualification *</label>
-
-            <input type="text" id="qualification" required>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Experience *</label>
-
-            <input type="text" id="experience" required>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>Applied Job Role *</label>
-
-            <select id="jobRole" required>
-
-                <option value="">Select</option>
-
-                <option>Web Developer</option>
-
-                <option>Content Creator</option>
-
-                <option>Designer</option>
-
-                <option>Other</option>
-
-            </select>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>City *</label>
-
-            <input type="text" id="city" required>
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>State *</label>
-
-            <input type="text" id="state" required>
-
-        </div>
-
-
-
-        <!-- ✅ नया Bio Paragraph Input -->
-
-        <div class="form-group">
-
-            <label>Write Bio with Experience And Qualification *</label>
-
-            <textarea id="bio" placeholder="Write about your experience, qualification and skills..." required></textarea>
-
-        </div>
-
-
-
-        <button type="submit" id="submit-btn">Apply Now</button>
-
-    </form>
-
-
-
-    <div class="loading" id="loading">
-
-        <div class="spinner"></div>
-
-        <p>Please wait...</p>
-
-    </div>
-
-
-
-    <div class="success" id="success">
-
-        Thank you for applying! HR team will contact you shortly.
-
-    </div>
-
-
-
+<style>
+/* BLOGGER SAFE GRID */
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  width:100%;
+}
+
+@media screen and (min-width:768px){
+  .book-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* BOOK CARD */
+.book-card{
+  display:block;
+  text-decoration:none !important;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* A4 PORTRAIT IMAGE BOX */
+.book-image{
+  width:100%;
+  aspect-ratio:1 / 1.414; /* A4 Portrait */
+  background:#f5f5f5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative; /* IMPORTANT for badge */
+}
+
+/* FULL IMAGE – NO CROP */
+.book-image img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* NEW GIF BADGE */
+.new-badge{
+  position:absolute;
+  top:6px;
+  right:6px;
+  width:40px;
+  z-index:5;
+}
+
+/* TEXT */
+.book-info{
+  padding:8px;
+  text-align:center;
+}
+
+.book-title{
+  font-size:14px;
+  font-weight:bold;
+  color:#000;
+}
+
+.book-author{
+  font-size:12px;
+  color:#555;
+  margin-top:3px;
+}
+</style>
+<h2 style="margin-bottom: 1px;">EXPLORE ALL BOOKS</h2><p>You Can Explore All The Available Books Here Easily.</p>
+
+<style>
+/* BLOGGER SAFE GRID */
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  width:100%;
+}
+
+@media screen and (min-width:768px){
+  .book-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* BOOK CARD */
+.book-card{
+  display:block;
+  text-decoration:none !important;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* A4 PORTRAIT IMAGE BOX */
+.book-image{
+  width:100%;
+  aspect-ratio:1 / 1.414; /* A4 Portrait */
+  background:#f5f5f5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* FULL IMAGE – NO CROP */
+.book-image img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* TEXT */
+.book-info{
+  padding:8px;
+  text-align:center;
+}
+
+.book-title{
+  font-size:14px;
+  font-weight:bold;
+  color:#000;
+}
+
+.book-author{
+  font-size:12px;
+  color:#555;
+  margin-top:3px;
+}
+</style>
+
+
+
+
+
+
+<div class="book-grid">
+  
+  
+  <a class="book-card"
+    href="https://www.maniebook.online/2026/04/blog-post_11.html?m=1">
     
+    <div class="book-image">
+      
+      
+      <!-- NEW GIF -->
+    <img class="new-badge" 
+         src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbtew7HAz5H8e9S-7Ej0BswdkYdx_8D0JcGuiDwtreTFK_XVmUNuCEmwJj6pa_jBqDwXY4bccwE-X6fEQwB2mhph2JhB93eslljtqmmUaKS77h6WzstNN0r-q9Ip5Bq_Q8jikp7Vafx4AjmS7oBSZjktEjSnKBoxSoY8jqYwZFWoolfP6rdvi7jRkfZF4Q/s160/NEW%20BOOK%20.gif" 
+         alt="New">
+      
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEsnDW4KnzW6YLYZwFirjqu3I7dM17grjhrshTHdsKb6JJXlCOuAVLVJoHoQZuv645HsLAFS02lTrtNcqaWI_VgERSVNfi_fBZ0T7Ap8QLNd0l0zTkUyf6edZr8CZJrWt2TfIoY4rBovxv4V1x-xR_ak0N4jfKOEPE58wL-RrVkUHVXEs-vnRjPeagxVcP/s1748/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">कल की साज़िश</div>
+      <div class="book-author">By Dr. Ram Mohan Singh </div>   
+      
+      
+    </div>
+  </a>
+  
 
-</section>
-
-
-
-<script>
-
-document.getElementById('job-form').addEventListener('submit', function(e) {
-
-    e.preventDefault();
-
-
-
-    const formData = {
-
-        fullName: fullName.value,
-
-        mobile: mobile.value,
-
-        email: email.value,
-
-        qualification: qualification.value,
-
-        experience: experience.value,
-
-        jobRole: jobRole.value,
-
-        city: city.value,
-
-        state: state.value,
-
-        bio: bio.value,
-
-        timestamp: new Date().toLocaleString()
-
-    };
-
-
-
-    loading.style.display = 'block';
-
-    document.querySelector('.form-container').style.display = 'none';
+<a class="book-card"
+     href="https://www.maniebook.online/2026/04/blog-post.html?m=1">
+    
+    <div class="book-image">
+      
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaKovyz9UYkQ3xzLE7U8MIuq2btLseD1aXQwOeoKG9VRCQNazWuFZ0ics0M2shNO8W2CHnlPzE9FEemKRoaeSegj6JT7RZLM8fFqNpmJpppbw8KYvl_BGkSacZvlJ12PJD1lOG-08u1CkzxoeVuvfuX9a_fkqrATRWiekkNKbyhPh46bOKY7TPfu2GUFHK/s1748/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">क्यो करते है हम पूजा?</div>
+      <div class="book-author">By Mahima Srivastav </div>   
+      
+      
+    </div>
+  </a>
 
 
+      
 
-    setTimeout(() => {
+  <a class="book-card"
+     href="https://www.maniebook.online/2026/03/courtroom-302.html?m=1">
+    
+    <div class="book-image">
+      
+     
+      <!-- NEW GIF -->
+    <img class="new-badge" 
+         src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhev0MOgcXasew6v_MPFDIdJBAC5CY69KovFXG94iPyy_JoKPHmf4dnzqRjO9bNTeF7YXQhANzdX-1SIQzM7O64WMlJJUsnvc2onB71ohwSqyZstvavdu625ui4sxGAIRwhG_KIaIMX-UYlC1DkEjYFsc7hViTRhElRNAyNmNigQkRQ2f_eQJD_f6hd1iuu/s80/TRENDING.gif" 
+         alt="New">
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4kUGF8Mg2sFEy4yIzFtaNwfS4BZstvsqbTvYSSjc7pwBJ35AWuYaC1gggDfgzyV2Bo7dXEPnfaTPldmxtmkL3Z0qokqnz5j_sQj6cdWni-LnBc3wxYDCTssSoqXBm4UjNu5cun6ik-RGt6fhY8sVcvKvlPNPlOoKKwsJYCpuWKdMk2sCwt_1N_VSKduhC/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">COURTROOM 302</div>
+      <div class="book-author">By Manish Chaudhary</div>   
+      
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a class="book-card"
+     href="https://www.maniebook.online/2026/03/still-i-rise-again.html">
+    
+    <div class="book-image">
+      
+     
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmlLBWl_4wWe0eGbNM_HX2q_2LFUMNdL5dLg7WiZPKhyDYaVeA6ix0FLVRsDeB7wIpezrDmkVLGti1ukplFHMwCyTDRSq0a7kPYa-PZxyF6zaxY-csZ30obiJ680Z4CCgVId2RtWCAiKeStxfqE4ES16xQGUX8C5xIIFJtMcIpPMcAVWs1USagy_YLnNwW/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">Still I Rise Again</div>
+      <div class="book-author">By Neelam Singh</div>   
+      
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a class="book-card" 
+href="https://www.maniebook.online/2026/03/blog-post_25.html?m=1">
+    
+    <div class="book-image">
+      
+      
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEig7m10kdXu-whz5BrLid5_xK6q5U0KYfhcyWcM7T-YOUW4__jDx2X6vQkxxrFZtOYCZj3t7zGVIB-XSIm-ykZX9jV-mLx962A9L3faYpFWdCgCwjVRrwPjcIvtxKkCB4YjIRR6BS7MX66wKNMwikPADxiVXien1XH7vK55_dnDIxg7H2MUerHBUdtefE13/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.png" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">इश्क़ अधूरा सा</div>
+      <div class="book-author">By रचना चौधरी </div>   
+      
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a class="book-card" 
+href="https://www.maniebook.online/2026/03/blog-post.html?m=1">
+    
+    <div class="book-image">
+      
+      
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIujDZG088MOVFt2gjpGityYVR4HDBrPVxFCX06XctN6aEU1VqCuJyg6zVI-XmThVpOkQwC12Tosf_m3QECus1ZDx8XIodr30m4EsYsUq7FVCS_4DaxjZEuEKH4tDKYvAeYx-tqrUKpLEddvr_rWhsuDRGeOlu-9HhyphenhyphenwOJetge_lhI2jnoTkQkMhEGuhQF/s1748/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">बदलती दुनिया, बदलते हम</div>
+      <div class="book-author">By अरविंद शिदें </div>   
+      
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a class="book-card" 
+href="https://www.maniebook.online/2026/03/think-like-thinker.html">
+    
+    <div class="book-image">
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbTG4o4HaUFd4Rh9sXMCHTYKKhvY4exlxqoevvRiVYJmZti7q_ChsrF40jganvZ_TLAlMqXenulioO4HwMlhM3iF1ZrPBXNfv-vgAwI2rZCNJNrYoL9tvLe8NeAe5Fj9VpjF4Nu8glkAeWnIExNk2C6rVkiVd0yZwHApFmBJZ6uM4uGdwIr2-ZqKb2brZP/s1748/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">Think Like A Thinker</div>
+      <div class="book-author">By Manish Chaudhary</div>   
+      
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a class="book-card" 
+href="https://www.maniebook.online/2026/02/maniebookhindi.html ">
+    
+    <div class="book-image">
+      
+      
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYOsK1lCRVzmM0YVKdROuEEbMqB9DygHRxrz2bGGeSsqX6Jo3Yc7WdX2K7QHOX3Vvr2BZkjmYk3dLu9-HRDxAyYFvUdcbUQmYTTmJHBgU6kXex9R4oXzhYX3BFy4aYYnpQuxd-ZbfRj0jXLcUgiCV-GTmryHzOQE5ROVVhoe2UjoTodjbGy1H8eEZg6bkl/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">आईने से आगे</div>
+      <div class="book-author">By अनुजा गुप्ता </div>
+      
+    </div>
+  </a>
+  
+  
+  <a class="book-card" 
+href="https://www.maniebook.online/2026/02/blog-post.html?m=1 ">
+    
+    <div class="book-image">
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8kbhxLRR96nCHnYB5DS9HKnzCjs8rbEk9LVgQzll6A0dOtqIFpJMMqMpCqUodUWSOszca3sR2-IaWYiQwbNMDjtqbM_ZnMQb3J4s1zRgwla_F56zM_XF_IBwCO99NREYSKBtMROSMKz2PalTb5vNN233sCRKSiftH68lwDWie4kriF37GsVMM3LjGDCgC/s1748/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">भगवान और मनुष्य</div>
+      <div class="book-author">By योगेश सारस्वत </div>
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/thinking-machines.html?m=1">
+    <div class="book-image">
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbKeDfujxGJ_ytuM_wOk75J5tgGwcznTy8D7UwnR6cHX7HEFp0BOBh1pomOG_vXRZXokdRVCHHEGFB1spQU4cwGtGU-1A7ZEbldAmS9NQeFviHcJPPYlIn1WKOjgzmmhGd9VsaQVsGQS-oQfQPoUZ9QhbGrKgEogkUrbqGNz8xbTWOO4_xOcJ38Rl_oG0p/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">Thinking Machines</div>
+      <div class="book-author">By Anurag K Reddy </div>
+      
+    </div>
+  </a>
+  
+  
+  
+    <a class="book-card" href="https://www.maniebook.online/2026/01/when-love-stayed-till-end.html?m=1">
+    <div class="book-image">
+      
+      
+      
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJkUsWNmR9x4YGieTaD1be7w5dEURkNv-CeVkUip95HXLd3LDj01Hn6dtfP5LfHzWQ8V9K968EwcGiqYqfRcXbF58SmoSMfwsFJuprrGWxZsGRtinITwI6zL0OJ_-IuiT6-0yKYvOGo5E4A-uN447_PvIPVtE7y2ubqyhMM7MNtg-DATHWSyGg2jyrK6oR/s16000/F38677D8-9B1F-4FC5-81BB-6A5D4BB27A78.png" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">When Love Stayed…</div>
+      <div class="book-author">By Neelam Singh </div>
+      
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/she-has-returned.html?m=1">
+    <div class="book-image">
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMVVVuy0z93xEXSI-wPQHCyUu7wGVc48e7lHaGraFmAE_Zm9YVP6ABgWzu0OnZXPcHuaCOa5wlGo3nQrsIaYCmR1MP26xbJELE6NEyirGQ1cZaKRNZ8WtFirpu2HTa0kcpAkDVlONISe-C7voNV8Uw9geEg90DFlemDIi2VmO6mRCqvxrFD1RfUmxkAgUd/s1748/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">She Has Returned…</div>
+      <div class="book-author">By Pankaj Kumar </div>
+      
+    </div>
+  </a>
+  
+  
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/blog-post_17.html?m=1">
+    <div class="book-image">
+      
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBZfLJxIaoSKv5D1IMXIE2QTwvlo-SiibZn7Q0anm4KnAQ2Qmm1qPc0Fxpo8Ct5X5t8-mhnbbdeyro1OEQ-L_Wj_MzMEaw6IU-zEsBoYMnZDa3ys1wGVNmyxKyT97qVEfaKVnZtJd16Uuc58P7aFN7yfrXGcYdjUgUhXh6UBGSFoxwn_TXW1ELJ3ErBq0H/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">रिश्तेदार ख़बरदार </div>
+      <div class="book-author">By श्रुति तोमर </div>
+      
+    </div>
+  </a>
+  
+  
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/blog-post_79.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizpMlugCOtwNBMUHxdft72zVoLiH7gBEbaQ2iJOyDW5RxtEnc5GDkgP81Kcb1X5eaQZRzeUIw1ZZD0iUdxh4I3LCCx3WCipUqBcm1xnjI6LO6E06LMdP6WmkJa6ySs9xh4dFMOvd2LT3Oq1KLIteQg6tCaLCl5RAV9_bunxjXlnMlzSSKtOTI1KfgdLo9c/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">दो रास्ते</div>
+      <div class="book-author">By उन्नति शर्मा</div>
+      
+    </div>
+  </a>
+  
+  
+  <a class="book-card"
+ href="https://www.maniebook.online/2026/01/maniebookhindi.html?m=1">
+    
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIsRL_5rjeCdKy-Vq46neXC5wA1nyOpqnGYG5eF4Kmikj21ObvSU6GKfZbHsuoSUN1Ctd52lAuQK_xUDCVpvwxfFtN46nB-26rh7iLxJIRbiEiGtv8OZOpGDxoQxqKN_9VMXRF1U5VdS-Tfzv_21lA9I4Gl1toerGpq5eZatAkpUzD60hUC22kI9BqzhdP/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%204.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">अमरता की कीमत</div>
+      <div class="book-author">By Vijender Singh</div>
+    </div>
+  </a>
+  
+  
+  
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/blog-post_15.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNClR3ODYJRzVNmjVfRONyB9eW5KusWWjUuupfIV_O2K_00ZpYnJpzU5EoGV8aIS6WcBaQfEI4ZMOm4ztNntD2y70LJBWxqXSDtJimIYVGGCtNjAlPqVTTovfGJeqkE6USLf3HIv1H32IVpA0lOqsuta_8bh4NZV6a5ZHrxp3D1_-8s-iZr0h_4GK3hJQr/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%205.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">वर्दी के उस पार</div>
+      <div class="book-author">By Manish Chaudhary</div>
+      
+    </div>
+  </a>
+  
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/silent-eyes-khamosh-nazrein.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn7LnnloKIVV8ccthkzilMm7CK8bpMSqw2YUUnbeJ4gDN2SSLbifUlW5Oq3edI43mxbH1zhQd9t74Wtz291_Ay5Jvc5tRlIN5QQfuQq0QCvijf328M4FJikTdwT6YkZVpuWqfuLASCFC3zwvtTN9T13Nhwtg33UTAFODlheBmUKzrZD5kuUV1Q9_3KW302/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">Silent Eyes</div>
+      <div class="book-author">By Monika Sharma</div>
+      
+    </div>
+  </a>
 
-        let apps = JSON.parse(localStorage.getItem('applications') || '[]');
 
-        apps.push(formData);
+  
+  <a class="book-card" href="https://www.maniebook.online/2026/01/hindistory_0679415169.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqVPwXuFAVU8RAqH6qukWu_XifCXB5kZkElVDsGiedudyeyLVZhyjxxEEIT1GZu2xo9wgACGjLGPa21ExV5J2hI0f_XECSItLk6wcWIkudefcVuk1CSd4VRZpAye84gy3vaQ3EndsM27L_VwqCz7TwgvOZ-W_wxeGkWg4ffisBOEGCKcDR18Fh4VnttM9g/s16000/CHAPTER%201%20—%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">वक्त की धार</div>
+      <div class="book-author">By नवनीत गुप्ता </div>
+      
+    </div>
+  </a>
+  
+  
+  
+  
+ 
+  <!--BOOK 1-->
+  <a class="book-card" href="https://www.maniebook.online/2025/12/emotion-ek-hawa-ki-tarah-science-of.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuKb9WGwm3BOHt2qDZSEyD_Z3InCBKsPndBbuoUV1xjksZFxp18_XHrGKDXBbUFBWXX8ttKeyC9y2Ovk32nDz2b_MQfv9Gn4rvdk-k-AVC_elGAiTvKCl2mWdDGiR90S_GuYs9uK99OOH5z3-tjPKZNXY_NUji2ewIb5QLLydCG-lgVzrvpc8fTXfyQrZV/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%201.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">EMOTION EK HAWA KI TARAH</div>
+      <div class="book-author">By Manish Chaudhary</div>
+    </div>
+  </a> 
 
-        localStorage.setItem('applications', JSON.stringify(apps));
 
-        loading.style.display = 'none';
-
-        success.style.display = 'block';
-
-    }, 3000);
-
-});
-
-</script>
-
+<a class="book-card" href="https://www.maniebook.online/2026/01/blog-post_4.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiR1tOO2r_muhHC2u4bA133NO_VTFVGFpYpl56OrrIXq7YHVAeuYFM4F3pG9E_rgVkWfvnMio2iKpGeENQ4jDitQAaAVp-A7jDIaDsXZdGM4RGDb9W2Xf2H5JO0lhwK0VGjeNNsNqcre3ma-DlZweq0jObDxfzQKb0ufFBRH4OfEh9TgJY7sPaAFWQCHu5A/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%203.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">जंगल की परछाई</div>
+      <div class="book-author">By विवेक अवस्थी</div>
+    </div>
+  </a>
 
 
-</body>
 
-</html>
+
+
+<a class="book-card" href="https://www.maniebook.online/2026/01/hindistory.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZG_-oOFl6D-LPvI_sAtp8EpBm5SKxyf-9ABePe7IiDnbYVRMyi8uIwZJ7hRx3-jqdq8NDbH4nzj8jsx2BPe4OyV-jM-KQnQJe3lgtELefm0Vxl554ChURmSDYQIi04N9GXOXUNlXSxQNWXk5VDHR7mARkBejkNNq7HzLQzO5cwGLi9N1ZOzWvRjoASbXm/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%206.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">लाल बर्फ की रात </div>
+      <div class="book-author">By एंथनी डिसूजा </div>
+    </div>
+  </a>
+
+
+<a class="book-card" href="https://www.maniebook.online/2026/01/blog-post_9.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjWrB3zbeRaXCMylf6uFcfMnyjUrVDHpgZ70re_vbCCCdo3Ct8-QGxRiJB8q93HVBh4o_LgBJmimdTilCGeHMi-qotPMpS2BgsQm9Aqi36RHeSoeIHem4HbuG_VK-dJ1wYHuqOAdhnGG8E8UZy46gPNrg1HLD0FfcaQRyodhXxu7U1JBNkxsU21rjw6064/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%207.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">खुद से जीत</div>
+      <div class="book-author">By विवेक अवस्थी</div>
+    </div>
+  </a>
+
+
+<a class="book-card" href="https://www.maniebook.online/2026/01/blog-post.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4oGUfBK3BaCJM070taC74gIfCygJgp39jGyuT2k8cwLeHRiEerDdPFgDQFm41BCRzrUJbzMiiZhLllnxvHlIwfqF8sM88vcuC0IurorQ_-CvcY-WrdPQX2BsZ3VzjNnq2gXdl-1UkBfnUHJOtm2rbh1Izf8J-uxu7jFAhuTwkFW9rIFv_6EfthupVpm1c/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%208.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">ख़ामोश दीवारें</div>
+      <div class="book-author">By विकास दुबे</div>
+    </div>
+  </a>
+
+
+<a class="book-card" href="https://www.maniebook.online/2026/01/two-lives-one-person_9.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAdwVanqCKjxoSSTIiHpn1kcJm5f58N4maIpq35VZppyHlncwjBCMLjsamQrl0TTyBEk2XzLTR180dAdvnowbFPCYEjd2DSwvKnP6Eq5o1hofkaTOVTiatNOD6hgwzE1IX9Z_4v_5irVjTG9JY1snT764baXGtoLo-pok14rM8cEESA98nAtzZNUhjPhsR/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%209.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">TWO LIVES,ONE PERSON</div>
+      <div class="book-author">By Manish Chaudhary</div>
+    </div>
+  </a>
+
+
+<a class="book-card" href="https://www.maniebook.online/2025/12/the-taste-of-struggle-story-of-struggle.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNvVaOKeBpgiCg2bKPRwEekpNMeJmIQJehjAHdJsHK94TH1PbJ2bx3zrBns0G0V6RZidO2q18hrRSAgcDAC2DiSOM5KeDCQIwsPj3BhqBgZS5Bu2BpZ1H8V6agRmbTrBf7FiTqyU2iIqhZZoZXNlecAf7AqhlTZSS-xCx06Q_al-s-RjB8ww1DoxL5pTIB/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%2013.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">THE TASTE OF STRUGGLE</div>
+      <div class="book-author">By Manish Chaudhary</div>
+    </div>
+  </a>
+
+
+<a class="book-card" href="https://www.maniebook.online/2025/12/blog-post_20.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgh_cIH65hMi_Pwm5gt2pmcgn2lFzPjsbiAC0t3QaLGikzUwcVeUd0Jqqob4hyphenhyphen6hi1GNMZCFudhYsyD7WaMmG5NzukDMvMIXYMeiKF33_ovVGIodPpd9j_YXMcCzoqYzyPBF1KZtrpqgrr3vcqypKAZfCkejP6htarY2LTh4FruzvyaZlRDq72rhyphenhyphenT3nbrf/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%2014.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title"> बीते कल की क़ीमत</div>
+      <div class="book-author">By मनीष चौधरी</div>
+    </div>
+  </a>
+
+
+
+<a class="book-card" href="https://www.maniebook.online/2025/12/blog-post.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWgMU8myn9LbMfqjRvAIbQb-IjTc0NoESeYsRw7GrcDF5RmdBQv_6dBzhtgCcmkReOe-XS34qr9Wl-o3V0D8rtdmI8ryXLY5JD7_TcGbNnr8YVdAZIlPIP6f8m_1MEllgaS6dyeGLatvJyCU9pxaZ7V83aPDk0dllYQfBxrVSidUIxQ1ZfZnJfg9447mbe/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%2015.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title"> त्रिलोकनाथ शंभूः</div>
+      <div class="book-author">By मनीष चौधरी</div>
+    </div>
+  </a>
+
+
+
+<a class="book-card" href="https://www.maniebook.online/2025/12/haste-haste-sochne-lage-subtitle-lifes.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6sg15pEmWWgyUAMQpPFs3eYomr2GtfCMG2WEIWyE7wkTp-kLZwadxhG_e8G_85lN1DEWNctvVGxwtagRrE_-x_DnaWxM2BtSn3B-iCUyqjYaqF1EkIRF__9Cqt9kC1i_v91m1DaSamPqUQsyzRqndjPRfj-TmAMnU2KpOAZvxuKt8LxwPizA0VODZpZNF/s16000/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">HASTE HASTE SOCHNE LAGE</div>
+      <div class="book-author">By Aditya Reddy</div>
+    </div>
+  </a>
+
+
+
+
+
+
+<!--BOOK 2-->
+  <a class="book-card" href="https://www.maniebook.online/2025/12/the-child-who-wasnt-mine_27.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht8BwvoHsfW6sJ21SXY9P7x3hjYDUtI_b1Tv-_TFMZe4ZZS5WUmVVQ1rlb954QDkMLDP_BXKJ1OSdu8M9RtsdlQg-mwS5v7W4xTnHKYsrWiaxMhbT5k6AeoMyKup6KUjTR0tLjZyOoT4793ibQrloVW2Psi8xw6KLwkMOlZBfDvkF1YibfBPMfT5CoykjU/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%2011.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">THE CHILD WHO WASN’T MINE</div>
+      <div class="book-author">By Manish Chaudhary</div>
+    </div>
+  </a>
+
+  <!--BOOK 3-->
+  <a class="book-card" href="https://www.maniebook.online/2025/12/he-never-felt-like-boss.html?m=1">
+    <div class="book-image">
+      <img alt="Book" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxOp2mo9UMPHm6MPNlLwKFwa89Fkcim4jFsFAadO5k5UF5tBvYAm4ayENeC7vzYCDHMBnE7RPAAgUuJj8nnHu8XbBVW2CxOSKvHFSfPLaSi4rFJB4-oJcctco0jzqKL6MZ8RAI5mneSfgiyPUb5gN9kKrYm-befpQ9MolS7BtlT89Qy0ZTaXIkpDVarQPd/s2622/CHAPTER%201%20%E2%80%94%20When%20the%20Wind%20First%20Touches%20the%20Heart%20-%2012.jpeg" />
+    </div>
+    <div class="book-info">
+      <div class="book-title">HE NEVER FELT LIKE A BOSS</div>
+      <div class="book-author">By Rahul,Preeti,Vipin</div>
+    </div>
+  </a>
+  
+  
+  
+  
+</div>
