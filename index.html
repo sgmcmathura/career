@@ -1,3 +1,780 @@
+ <!DOCTYPE html>
+
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Book Layout Design</title>
+
+    <style>
+
+        /* --- Global Styles --- */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+        body {
+
+            background-color: #ffffff;
+
+            color: #000000;
+
+            overflow-x: hidden;
+
+            width: 100%;
+
+        }
+
+
+
+        /* --- Header Section --- */
+
+        header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            padding: 10px 2%;
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+        .logo {
+
+            width: 15%;
+
+        }
+
+        .logo img {
+
+            width: 100%;
+
+            max-width: 100px;
+
+            height: auto;
+
+            border: 1px solid #ccc;
+
+        }
+
+        .header-right {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-end;
+
+            gap: 10px;
+
+            width: 80%;
+
+        }
+
+        .search-box {
+
+            display: flex;
+
+            border: 2px solid #144926;
+
+            border-radius: 4px;
+
+            overflow: hidden;
+
+            width: 100%;
+
+            max-width: 350px;
+
+        }
+
+        .search-box input {
+
+            border: none;
+
+            padding: 5px 8px;
+
+            flex: 1;
+
+            outline: none;
+
+            font-size: 14px;
+
+            width: 80%;
+
+        }
+
+        .search-box button {
+
+            background: #ffffff;
+
+            border: none;
+
+            border-left: 2px solid #144926;
+
+            padding: 0 10px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+        }
+
+        .nav-menu {
+
+            display: flex;
+
+            gap: 2%;
+
+            justify-content: flex-end;
+
+            width: 100%;
+
+        }
+
+        .nav-btn {
+
+            background: linear-gradient(to bottom, #f34b4b, #d32020);
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 4px 3%;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+
+            font-size: 1vw; 
+
+            min-font-size: 10px;
+
+            white-space: nowrap;
+
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+            border: 1px solid #b71c1c;
+
+        }
+
+
+
+        /* ======================================================================= */
+
+        /* --- Hero Banner Section - Desktop Styles (बड़ा) --- */
+
+        /* ======================================================================= */
+
+        .hero-banner {
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center; 
+
+            margin-top: 5px;
+
+            background-color: #f8f8f8; 
+
+        }
+
+        
+
+        .hero-banner img {
+
+            width: 100%; /* पूरी चौड़ाई भरें */
+
+            max-width: 1200px; /* 1200px से बड़ा न हो */
+
+            height: 400px; /* डेस्कटॉप पर बड़ा, उदाहरण के लिए 400px. आप इसे बदल सकते हैं. */
+
+            object-fit: cover; /* इमेज को बिना विकृत किए फ्रेम में फिट करें */
+
+            display: block;
+
+            margin: 0 auto;
+
+        }
+
+        /* ======================================================================= */
+
+
+
+        /* --- Featured Section (Grey Background) --- */
+
+        .featured-section {
+
+            background-color: #e6e6e6;
+
+            padding: 20px 2%;
+
+            width: 100%;
+
+        }
+
+        .featured-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            gap: 3%;
+
+            align-items: flex-start;
+
+            position: relative;
+
+        }
+
+        .featured-image {
+
+            width: 35%;
+
+        }
+
+        .featured-image img {
+
+            width: 100%;
+
+            height: auto;
+
+            display: block;
+
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+
+        }
+
+        .featured-content {
+
+            width: 62%;
+
+            position: relative;
+
+            padding-bottom: 20px;
+
+        }
+
+        .featured-content h2 {
+
+            font-family: "Times New Roman", Times, serif;
+
+            font-size: 3vw;
+
+            margin-bottom: 2px;
+
+        }
+
+        .featured-content h4 {
+
+            font-size: 1.5vw;
+
+            margin-bottom: 10px;
+
+            font-weight: 600;
+
+        }
+
+        .featured-content p {
+
+            font-size: 1.5vw;
+
+            line-height: 1.4;
+
+            color: #222;
+
+            word-wrap: break-word;
+
+        }
+
+        .read-more-btn {
+
+            background: linear-gradient(to bottom, #f34b4b, #d32020);
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 5px 15px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+
+            font-size: 1.5vw;
+
+            position: absolute;
+
+            right: 0;
+
+            bottom: -25px;
+
+            box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.4);
+
+            border: 1px solid #b71c1c;
+
+            z-index: 10;
+
+            white-space: nowrap;
+
+        }
+
+
+
+        /* --- Marquee Section --- */
+
+        .marquee-container {
+
+            background-color: #000000;
+
+            color: #ffffff;
+
+            padding: 6px 0;
+
+            margin-top: 15px;
+
+            font-size: 1.8vw;
+
+            border-top: 1px solid #fff;
+
+            border-bottom: 1px solid #fff;
+
+        }
+
+
+
+        /* --- Top Books Section --- */
+
+        .top-books-section {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 20px 2%;
+
+            display: flex;
+
+            gap: 3%;
+
+            align-items: flex-start;
+
+            border-bottom: 10px solid #000000;
+
+            width: 100%;
+
+        }
+
+        .top-books-content {
+
+            width: 55%;
+
+        }
+
+        .top-books-content h2 {
+
+            font-family: "Times New Roman", Times, serif;
+
+            font-size: 3.5vw;
+
+            margin-bottom: 10px;
+
+        }
+
+        .top-books-content p {
+
+            font-size: 1.5vw;
+
+            line-height: 1.4;
+
+            color: #222;
+
+            word-wrap: break-word;
+
+        }
+
+        .top-books-grid {
+
+            width: 42%;
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 5%;
+
+        }
+
+        .top-books-grid img {
+
+            width: 100%;
+
+            height: auto;
+
+            display: block;
+
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+
+        }
+
+
+
+        /* ======================================================================= */
+
+        /* --- Mobile Specific Styles (सिर्फ मोबाइल स्क्रीन पर बदलने के लिए) --- */
+
+        /* ======================================================================= */
+
+        @media screen and (max-width: 600px) {
+
+            header { 
+
+                padding: 20px 2%; /* हेडर की ऊंचाई बढ़ाई */
+
+            }
+
+            .header-right {
+
+                gap: 15px; /* हेडर आइटम्स के बीच की जगह बढ़ाई */
+
+            }
+
+            .nav-btn { 
+
+                font-size: 10px; 
+
+                padding: 8px 10px; /* बटन की ऊंचाई बढ़ाई */
+
+            }
+
+            
+
+            .hero-banner {
+
+                margin-top: 30px;
+
+                margin-bottom: 15px;
+
+            }
+
+            
+
+            /* --- Hero Banner - Mobile Size (छोटा) --- */
+
+            .hero-banner img { 
+
+                height: 120px; /* मोबाइल पर इमेज की ऊंचाई 100px (डेस्कटॉप के 400px से बहुत छोटा) कर दी */
+
+                object-fit: cover; /* इमेज को बिना विकृत किए फ्रेम में फिट करें */
+
+            }
+
+
+
+            .featured-section { 
+
+                padding: 40px 2%; /* सेक्शन के ऊपर-नीचे की जगह (padding) बढ़ाई */
+
+            }
+
+            .featured-content h2 { 
+
+                font-size: 20px; 
+
+                margin-bottom: 10px; 
+
+            }
+
+            .featured-content h4 { 
+
+                font-size: 12px; 
+
+                margin-bottom: 15px; 
+
+            }
+
+            .featured-content p { 
+
+                font-size: 11px; 
+
+                line-height: 2; /* लाइनों के बीच की दूरी दोगुनी कर दी */
+
+            }
+
+            .read-more-btn { 
+
+                font-size: 11px; 
+
+                bottom: -20px; 
+
+                padding: 8px 12px; 
+
+            }
+
+            
+
+            .marquee-container { 
+
+                font-size: 12px; 
+
+                padding: 15px 0; /* Marquee की ऊंचाई बढ़ाई */
+
+                margin-top: 30px; 
+
+            }
+
+            
+
+            .top-books-section { 
+
+                padding: 40px 2%; /* सेक्शन के ऊपर-नीचे की जगह बढ़ाई */
+
+                border-bottom-width: 15px; /* नीचे का बॉर्डर मोटा किया */
+
+            }
+
+            .top-books-content h2 { 
+
+                font-size: 22px; 
+
+                margin-bottom: 15px; 
+
+            }
+
+            .top-books-content p { 
+
+                font-size: 11px; 
+
+                line-height: 2; /* लाइनों के बीच की दूरी दोगुनी कर दी */
+
+            }
+
+            .top-books-grid {
+
+                gap: 15px 5%; /* ग्रिड में किताबों के बीच की ऊंचाई (gap) बढ़ाई */
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <header>
+
+        <div class="logo">
+
+            <img src="https://via.placeholder.com/120x120?text=Logo" alt="Logo">
+
+        </div>
+
+        <div class="header-right">
+
+            <div class="nav-menu">
+
+                <a href="#" class="nav-btn">HOME</a>
+
+                <a href="#" class="nav-btn">HOME</a>
+
+                <a href="#" class="nav-btn">HOME</a>
+
+                <a href="#" class="nav-btn">HOME</a>
+
+            </div>
+
+
+
+<style>
+
+    /* एनिमेशन बनाने का कोड */
+
+    @keyframes pulseBtn {
+
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 32, 32, 0.7); }
+
+        50% { transform: scale(1.08); box-shadow: 0 0 15px 10px rgba(211, 32, 32, 0); }
+
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 32, 32, 0); }
+
+    }
+
+
+
+    /* बटन का डिज़ाइन और एनिमेशन लगाने का कोड */
+
+    .animated-nav-btn {
+
+        background: linear-gradient(to bottom, #f34b4b, #d32020);
+
+        color: white;
+
+        text-decoration: none;
+
+        padding: 10px 20px; /* बटन को बड़ा करने के लिए */
+
+        font-size: 12px;    /* टेक्स्ट को बड़ा करने के लिए */
+
+        border-radius: 25px;
+
+        font-weight: bold;
+
+        border: 1px solid #b71c1c;
+
+        display: inline-block; /* एनिमेशन काम करने के लिए यह ज़रूरी है */
+
+        
+
+        /* यहाँ एनिमेशन जोड़ा गया है (2 सेकंड में लगातार चलेगा) */
+
+        animation: pulseBtn 2s infinite; 
+
+    }
+
+</style>
+
+
+
+<a href="#" class="animated-nav-btn">UPLOAD BOOK</a>
+
+
+
+
+
+
+
+        </div>
+
+    </header>
+
+
+
+    <section class="hero-banner">
+
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8O1zYC0GXPuET-ZOO0dIZ8RizyC2svuK8BSZRFMCwLPCMY_VWPboSQW1FKQQnfW84pQpe2K38jIBEO9omF5XgZ5k3b4bhsyQ1bFxNLwaR8VXASc5SLS_CF8pvSYOnL1b5g6jqzdRloUdjxAsdHWGQXh2U68jVHkPo62wyCowNk5rtGBUiYEbCOETVLOKu/s1200/Untitled%20design.jpeg" alt="Wooden Buttons Banner">
+
+    </section>
+
+
+
+    <section class="featured-section">
+
+        <div class="featured-container">
+
+            <div class="featured-image">
+
+                <img src="https://via.placeholder.com/400x450/ffd54f/000000?text=Book+Image" alt="Featured Book">
+
+            </div>
+
+            <div class="featured-content">
+
+                <h2>HEADING</h2>
+
+                <h4>Author- Hxjfhfjdjf</h4>
+
+                <p>ChxkshfkfifzkvskgGldgksohsgisigs<br>
+
+                gisksgksgkagjsgiaigsgigiaigaigag<br>
+
+                isigsigaigsigsgkaohsgosgiaigagoagi<br>
+
+                aigaigafiafiagkaifaifafi</p>
+
+                <a href="#" class="read-more-btn">Read More</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <div class="marquee-container">
+
+        <marquee behavior="scroll" direction="left" scrollamount="4">
+
+            Marquee Code - hdjshfjzjjzhjdlgkxkgjxkgjckcjfxjdhfhfjLfjgjkFjgkL
+
+        </marquee>
+
+    </div>
+
+
+
+    <section class="top-books-section">
+
+        <div class="top-books-content">
+
+            <h2>TOP BOOKS</h2>
+
+            <p>ChxkshfkfifzkvskgGldgksohsgisigs<br>
+
+            gisksgksgkagjsgiaigsgigiaigaigag<br>
+
+            isigsigaigsigsgkaohsgosgiaigagoagi<br>
+
+            aigaigafiafiagkaifaifafi</p>
+
+        </div>
+
+        <div class="top-books-grid">
+
+            <img src="https://via.placeholder.com/200x250/ffd54f/000000?text=Book+1" alt="Grid Book 1">
+
+            <img src="https://via.placeholder.com/200x250/ffd54f/000000?text=Book 2" alt="Grid Book 2">
+
+            <img src="https://via.placeholder.com/200x250/ffd54f/000000?text=Book 3" alt="Grid Book 3">
+
+            <img src="https://via.placeholder.com/200x250/ffd54f/000000?text=Book 4" alt="Grid Book 4">
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
 <style>
 /* BLOGGER SAFE GRID */
 .book-grid{
@@ -622,3 +1399,4 @@ href="https://www.maniebook.online/2026/02/blog-post.html?m=1 ">
   
   
 </div>
+
